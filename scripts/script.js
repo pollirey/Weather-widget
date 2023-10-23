@@ -41,10 +41,13 @@ function getWeatherData(location) {
 
     if (data.cod === 200) {
 
+        const temperatureInCelsius = (data.main.temp - 273.15).toFixed(1); 
+        const description = data.weather[0].description;
+
       weatherData.innerHTML = `
         <p>Город: ${data.name}</p>
-        <p>Температура: ${data.main.temp}°C</p>
-        <p>Погода: ${data.weather[0].description}</p>
+        <p>Температура: ${temperatureInCelsius}°C</p>
+        <p>Погода: ${description}</p>
       `;
     } else {
 
